@@ -1,7 +1,7 @@
 # Adaptive Teachers for Amortized Samplers
 
 **Authors:**  
-Minsu Kim, Sanghyeok Choi, Taeyoung Yun, Emmanuel Bengio, Leo Feng, Jarrid Rector-Brooks, Sungsoo Ahn, Jinkyoo Park, Nikolay Malkin, Yoshua Bengio  
+Minsu Kim*, Sanghyeok Choi*, Taeyoung Yun, Emmanuel Bengio, Leo Feng, Jarrid Rector-Brooks, Sungsoo Ahn, Jinkyoo Park, Nikolay Malkin, Yoshua Bengio  
 
 **Paper Link:** [https://arxiv.org/abs/2410.01432](https://arxiv.org/abs/2410.01432)
 
