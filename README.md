@@ -23,7 +23,7 @@ This repository is organized as follows:
 To install the required dependencies, run:
 
 ~~~bash
-pip install --upgrade ...
+pip install -r requirements.txt
 ~~~
 *(Please fill in the appropriate dependency names and versions.)*
 
@@ -80,14 +80,29 @@ python train.py --energy many_well --teacher
 ### Overview
 The `discovery/` folder provides code for four biochemical discovery tasks, showcasing how our adaptive Teacher-Student approach can improve mode coverage and sample efficiency in real-world discovery scenarios.
 
+### Large Files
+To run `sehstr` task, you should download `sehstr_gbtr_allpreds.pkl.gz` and `block_18_stop6.pkl.gz`. Both are available for download at https://figshare.com/articles/dataset/sEH_dataset_for_GFlowNet_/22806671
+DOI: 10.6084/m9.figshare.22806671
+These files should be placed in `datasets/sehstr/`.
+
+### Additional Dependencies
+Biochemical discovery tasks require `torch_geometric` library. 
+```
+pip install torch_geometric
+pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+```
+
 ### Usage
 
 ~~~bash
-python run_discovery.py --data_path ... --model_config ...
-~~~
-*(Please fill in the appropriate script name and command-line flags.)*
+python runexpwb.py --setting qm9str --model teacher
 
----
+# With PRT
+python runexpwb.py --setting qm9str --model teacher --offline_select prt
+
+# With PER
+python runexpwb.py --setting qm9str --model teacher --per True
+~~~
 
 ## Citation
 
