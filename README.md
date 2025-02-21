@@ -95,6 +95,7 @@ pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -
 ### Usage
 
 ~~~bash
+cd discovery/
 python runexpwb.py --setting qm9str --model teacher
 
 # With PRT
