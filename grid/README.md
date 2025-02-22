@@ -18,8 +18,8 @@ python trainer.py --agent $AGENT --ndim $NDIM --horizon $HORIZON --run_name $RUN
 ```
 where,
 - `$AGENT` $\in$ {"tb", "gafn", "teacher"}
-- `$NDIM` $\in \mathbb{N}$
-- `$HORIZON` $\in \mathbb{N}$.
+- `$NDIM` $\in$ {2, 4, ...}
+- `$HORIZON` $\in$ {16, 32, ...}.
 
 To log the results and plots with wandb, add `--logger wandb --plot` to the command.  
 
@@ -29,7 +29,7 @@ To run with the buffers:
 python trainer.py --agent $AGENT --ndim $NDIM --horizon $HORIZON --use_buffer --buffer_size $BUFSIZE --buffer_pri $BUFPRI --run_name $RUN_NAME --seed $SEED
 ```
 where,
-- `$BUFSIZE` $\in \mathbb{N}$
+- `$BUFSIZE` is a natural number or -1 to use the default setting.
 - `$BUFPRI` $\in$ {"none', "reward", "loss", "teacher_reward"}.
 
 
