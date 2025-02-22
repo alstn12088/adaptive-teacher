@@ -1,5 +1,6 @@
 __pycache__/
 wandb/
+.venv/
 
 discovery/datasets/sehstr/block_18_stop6.pkl
 discovery/datasets/sehstr/sehstr_gbtr_allpreds.pkl

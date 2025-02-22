@@ -6,5 +6,10 @@ rdkit==2023.3.2
 flexs==0.2.8
 polyleven==0.8
 networkx==2.6.3
-wandb==0.15.3
+einops
+matplotlib
+seaborn
+tqdm
+wandb
 viennarna
+POT
