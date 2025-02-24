@@ -1,12 +1,11 @@
 # Adaptive Teachers for Amortized Samplers
 
-**Authors:**  
-Minsu Kim*, Sanghyeok Choi*, Taeyoung Yun, Emmanuel Bengio, Leo Feng, Jarrid Rector-Brooks, Sungsoo Ahn, Jinkyoo Park, Nikolay Malkin, Yoshua Bengio  
+This repository contains the official code for the paper, "[Adaptive Teachers for Amortized Samplers](https://arxiv.org/abs/2410.01432) (ICLR 2025)".
 
-**Paper Link:** [https://arxiv.org/abs/2410.01432](https://arxiv.org/abs/2410.01432)
+**Authors:**  Minsu Kim*, Sanghyeok Choi*, Taeyoung Yun, Emmanuel Bengio, Leo Feng, Jarrid Rector-Brooks, Sungsoo Ahn, Jinkyoo Park, Nikolay Malkin, Yoshua Bengio  
+
 
 ## Introduction
-This repository contains the official code for the paper, "**Adaptive Teachers for Amortized Samplers** (ICLR 2025)".
 
 Amortized inference aims to train a parametric model to approximate a target distribution where direct sampling is typically intractable. We view sampling as a sequential decision-making process and leverage reinforcement learning (RL) techniques, specifically Generative Flow Networks (GFlowNets). However, efficient exploration remains challenging.  
 Our key innovation is an auxiliary "Teacher" behavior model that adapts its sampling distribution to focus on regions where the "Student" amortized sampler has high error. This Teacher distribution can generalize across unexplored modes, improving both sample efficiency and mode coverage.
