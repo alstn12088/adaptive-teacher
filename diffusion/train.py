@@ -299,8 +299,14 @@ def train_step(energy, gfn_model, gfn_optimizer, gfn_adv, buffer, it, threshold,
     if args.teacher:
         if it % 2 == 0:
             init_state = torch.zeros(args.batch_size, energy.data_ndim).to(device)
-            loss, states, logpf, _, log_r, adv_reward  = fwd_tb(init_state, gfn_model, energy.log_reward, 
-            exploration_std=exploration_std, return_exp = True, threshold = threshold)
+            loss, states, logpf, _, log_r, adv_reward  = fwd_tb(
+                init_state,
+                gfn_model,
+                energy.log_reward,
+                exploration_std=exploration_std,
+                return_exp=True,
+                threshold=threshold,
+            )
             if it == 0:
                 buffer.add(states[:, -1], adv_reward)
             if args.els and it % (50) == 0:
@@ -311,16 +317,26 @@ def train_step(energy, gfn_model, gfn_optimizer, gfn_adv, buffer, it, threshold,
         # off-policy training
         else:
             if it % (2*args.adv_freq) == 1:
-                loss, states, adv_reward = bwd_train_step(energy, gfn_model, gfn_adv, buffer, exploration_std, threshold, args, it=it, is_buffer = False)
-                
+                loss, states, adv_reward = bwd_train_step(
+                    energy, gfn_model, gfn_adv, buffer, exploration_std, threshold, args, it=it, is_buffer=False
+                )
                 #buffer.add(states[:, -1], energy.log_reward(states[:, -1]))
             else:
-                loss, states, adv_reward = bwd_train_step(energy, gfn_model, gfn_adv, buffer, exploration_std, threshold, args, it=it, is_buffer = True)
+                loss, states, adv_reward = bwd_train_step(
+                    energy, gfn_model, gfn_adv, buffer, exploration_std, threshold, args, it=it, is_buffer=True
+                )
+
     elif args.per:
         if it % 2 == 0:
             init_state = torch.zeros(args.batch_size, energy.data_ndim).to(device)
-            loss, states, logpf, _, log_r, adv_reward  = fwd_tb(init_state, gfn_model, energy.log_reward, 
-            exploration_std=exploration_std, return_exp = True, threshold = threshold)
+            loss, states, logpf, _, log_r, adv_reward  = fwd_tb(
+                init_state,
+                gfn_model,
+                energy.log_reward, 
+                exploration_std=exploration_std,
+                return_exp=True,
+                threshold=threshold,
+            )
             if it == 0:
                 buffer.add(states[:, -1], adv_reward)
             if it % (50) == 0:
@@ -337,15 +353,22 @@ def train_step(energy, gfn_model, gfn_optimizer, gfn_adv, buffer, it, threshold,
         # off-policy training of PER
         else:
             samples, rewards = buffer.sample()
-            loss, states, _, _, _, adv_reward = bwd_tb(samples, gfn_model, energy.log_reward, exploration_std, return_exp=True, is_adv = False, threshold = threshold)
+            loss, states, _, _, _, adv_reward = bwd_tb(
+                samples, gfn_model, energy.log_reward, exploration_std, return_exp=True, is_adv=False, threshold=threshold
+            )
 
                 #buffer.add(states[:, -1], energy.log_reward(states[:, -1]))
-
    
     else:
         init_state = torch.zeros(args.batch_size, energy.data_ndim).to(device)
-        loss, states, logpf, _, log_r, adv_reward  = fwd_tb(init_state, gfn_model, energy.log_reward, 
-        exploration_std=exploration_std, return_exp = True, threshold = threshold)        
+        loss, states, logpf, _, log_r, adv_reward  = fwd_tb(
+            init_state,
+            gfn_model,
+            energy.log_reward,
+            exploration_std=exploration_std,
+            return_exp=True,
+            threshold=threshold,
+        )
 
 
     loss.backward()
@@ -395,11 +418,15 @@ def bwd_train_step(energy, gfn_model, gfn_adv, buffer, exploration_std, threshol
         samples = gfn_adv.sample(args.batch_size, energy.log_reward)
         filtering = energy.log_reward(samples) > threshold
         samples = samples[filtering]
-        loss, states, log_pfs, log_pbs, log_r, adv_reward = bwd_tb(samples, gfn_model, energy.log_reward, exploration_std, return_exp=True, is_adv = False, threshold = threshold)
+        loss, states, log_pfs, log_pbs, log_r, adv_reward = bwd_tb(
+            samples, gfn_model, energy.log_reward, exploration_std, return_exp=True, is_adv=False, threshold=threshold
+        )
         buffer.add(states[:, -1], adv_reward)
         samples, adv_rewards = buffer.sample()
 
-    loss, states, log_pfs, log_pbs, log_r, adv_reward = bwd_tb(samples, gfn_model, energy.log_reward, exploration_std, return_exp=True, is_adv = False, threshold = threshold)
+    loss, states, log_pfs, log_pbs, log_r, adv_reward = bwd_tb(
+        samples, gfn_model, energy.log_reward, exploration_std, return_exp=True, is_adv=False, threshold=threshold
+    )
 
     return loss, states, adv_reward
 
