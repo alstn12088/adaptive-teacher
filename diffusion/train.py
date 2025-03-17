@@ -339,7 +339,7 @@ def train_step(energy, gfn_model, gfn_optimizer, gfn_adv, buffer, it, threshold,
             )
             if it == 0:
                 buffer.add(states[:, -1], adv_reward)
-            if it % (50) == 0:
+            if args.ls and it % (50) == 0:
                 samples, rewards = buffer.sample()
                 local_search_samples, log_r = langevin_dynamics(samples, energy.log_reward, device, args)
                 buffer.add(local_search_samples, log_r)            
@@ -358,7 +358,7 @@ def train_step(energy, gfn_model, gfn_optimizer, gfn_adv, buffer, it, threshold,
             )
 
                 #buffer.add(states[:, -1], energy.log_reward(states[:, -1]))
-   
+
     else:
         init_state = torch.zeros(args.batch_size, energy.data_ndim).to(device)
         loss, states, logpf, _, log_r, adv_reward  = fwd_tb(
