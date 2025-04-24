@@ -101,7 +101,8 @@ class TeacherStudentTBAgent(BaseAgent):
         batch_obs = self.to_ft(batch_obs)
         batch_s = self.to_lt(batch_s)
 
-        visited_x = []
+        # visited_x = []
+        visited_x = [None] * batch_size
         not_done_indices = [i for i in range(batch_size)]
 
         while not all(batch_done):
@@ -129,7 +130,8 @@ class TeacherStudentTBAgent(BaseAgent):
                     batch_r[env_idx] = _r  # episodic
                     batch_traj_obs[env_idx].append(self.to_ft(_obs))
                     batch_traj_s[env_idx].append(self.to_lt(_s))
-                    visited_x.append(tuple(_s))
+                    # visited_x.append(tuple(_s))
+                    visited_x[env_idx] = tuple(_s)
                 else:
                     new_batch_obs.append(_obs)
                     new_batch_s.append(_s)
