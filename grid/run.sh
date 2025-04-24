@@ -9,6 +9,7 @@ python trainer.py --seed $seed --agent gafntb --ri_scale 0.01 --run_name "riscal
 python trainer.py --seed $seed --agent teacher --ndim $ndim --horizon $horizon --logger wandb --plot &
 python trainer.py --seed $seed --agent tb --use_buffer --buffer_pri reward --run_name "PRT" --ndim $ndim --horizon $horizon --logger wandb --plot &
 python trainer.py --seed $seed --agent tb --use_buffer --buffer_pri teacher_reward --run_name "PER" --ndim $ndim --horizon $horizon --logger wandb --plot &
+python trainer.py --seed $seed --agent teacher --use_buffer --buffer_pri reward --run_name "PRT" --ndim $ndim --horizon $horizon --logger wandb --plot &
 python trainer.py --seed $seed --agent teacher --use_buffer --buffer_pri teacher_reward --run_name "PER" --ndim $ndim --horizon $horizon --logger wandb --plot &
 
 wait

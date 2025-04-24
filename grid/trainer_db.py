@@ -5,9 +5,9 @@ import gc
 import os
 import sys
 
-from grid.local_search import back_and_forth
-
 sys.path.append("..")
+
+from grid.local_search import back_and_forth
 
 from typing import Callable, Dict, Optional
 import itertools

@@ -46,7 +46,10 @@ def plot_kde(samples, ax=None, bounds=(-10., 10.)):
     if ax is None:
         fig, ax = plt.subplots(1)
     samples = samples.cpu().detach()
-    sns.kdeplot(x=samples[:, 0], y=samples[:, 1], cmap="Blues", fill=True, ax=ax, clip=bounds)
+    try:
+        sns.kdeplot(x=samples[:, 0], y=samples[:, 1], cmap="Blues", fill=True, ax=ax, clip=bounds)
+    except Exception as e:
+        print(e)
 
 
 def viz_many_well(mw_energy, samples=None, num_samples=5000):
@@ -125,10 +128,14 @@ def viz_kde2d(points, title, fname, lim=7.0, sample_num=2000):
     fig, ax = plt.subplots(1, 1, figsize=(7, 7), dpi=200)
     if title is not None:
         ax.set_title(title)
-    sns.kdeplot(
-        x=points[:sample_num, 0], y=points[:sample_num, 1],
-        cmap="coolwarm", fill=True, ax=ax
-    )
+    try:
+        sns.kdeplot(
+            x=points[:sample_num, 0], y=points[:sample_num, 1],
+            cmap="coolwarm", fill=True, ax=ax
+        )
+    except Exception as e:
+        print(e)
+
     ax.set_xlim(-lim, lim)
     ax.set_ylim(-lim, lim)
     return fig, ax
