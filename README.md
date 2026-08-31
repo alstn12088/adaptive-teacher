@@ -2,7 +2,7 @@
 
 This repository contains the official code for the paper, "[Adaptive Teachers for Amortized Samplers](https://arxiv.org/abs/2410.01432) (ICLR 2025)".
 
-**Authors:**  Minsu Kim*, Sanghyeok Choi*, Taeyoung Yun, Emmanuel Bengio, Leo Feng, Jarrid Rector-Brooks, Sungsoo Ahn, Jinkyoo Park, Nikolay Malkin, Yoshua Bengio  
+**Authors:**  Minsu Kim*, Sanghyeok Choi*, Taeyoung Yun, Emmanuel Bengio, Leo Feng, Jarrid Rector-Brooks, Sungsoo Ahn, Jinkyoo Park, Esmeralda S. Whitammer, Yoshua Bengio  
 
 
 ## Introduction
@@ -35,7 +35,7 @@ If you use this code in your work, please cite our paper:
 ```bibtex
 @article{kim2025adaptive, 
   title={Adaptive teachers for amortized samplers},
-  author={Kim, Minsu and Choi, Sanghyeok and Yun, Taeyoung and Bengio, Emmanuel and Feng, Leo and Rector-Brooks, Jarrid and Ahn, Sungsoo and Park, Jinkyoo and Malkin, Nikolay and Bengio, Yoshua},
+  author={Kim, Minsu and Choi, Sanghyeok and Yun, Taeyoung and Bengio, Emmanuel and Feng, Leo and Rector-Brooks, Jarrid and Ahn, Sungsoo and Park, Jinkyoo and Whitammer, Esmeralda S. and Bengio, Yoshua},
   journal={International Conference on Learning Representations (ICLR)}, 
   year={2025} 
 }
